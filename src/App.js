@@ -1,17 +1,13 @@
-import logo from "./logo.svg";
 import "bootstrap/dist/css/bootstrap.css";
+import Search from "./Search";
 import "./App.css";
 
-import Search from "./Search";
-
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Search />
-      </header>
+      <div className="container">
+        <Search defaultCity="Kharkiv" />
+      </div>
     </div>
   );
 }
-
-export default App;

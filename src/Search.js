@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import axios from "axios";
+
 import WeatherForecast from "./WeatheForecast";
-import "./Search.css";
+
 import Overview from "./Overview";
-export default function Search() {
-  let [city, setCity] = useState("Kharkiv");
+import axios from "axios";
+import "./Search.css";
+export default function Search(props) {
+  let [city, setCity] = useState(props.defaultCity);
 
   let [weather, setWeather] = useState({ ready: false });
 
@@ -18,12 +20,14 @@ export default function Search() {
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
     });
   }
-  function submitSearch(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-
+    search();
+  }
+  function search() {
     let apiKey = "41a495466476bec4ff42a9430e4f37e4";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(showTemperature);
@@ -34,29 +38,35 @@ export default function Search() {
 
   if (weather.ready) {
     return (
-      <div>
-        <form onSubmit={submitSearch}>
-          <input
-            type="search"
-            placeholder="Type a query"
-            onChange={updateQuery}
-          />
-          <input
-            type="submit"
-            className="btn btn-primary shadow-sm"
-            value="Search"
-          />
+      <div className="Weather">
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <div className="col-8">
+              <input
+                type="search"
+                placeholder="Enter a city..."
+                onChange={updateQuery}
+              />
+            </div>
+            <div className="col-6">
+              <input
+                type="submit"
+                className="btn btn-primary shadow-sm"
+                value="Search"
+              />
 
-          <button type="button" className="btn btn-secondary">
-            Current
-          </button>
+              <button type="button" className="btn btn-secondary">
+                Current
+              </button>
+            </div>
+          </div>
         </form>
         <Overview data={weather} />
         <WeatherForecast coordinates={weather.coordinates} />
       </div>
     );
   } else {
-    submitSearch();
+    search();
     return "Loading...";
   }
 }

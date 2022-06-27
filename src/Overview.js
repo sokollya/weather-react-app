@@ -1,9 +1,11 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcon";
+import "./Search";
 export default function Overview(props) {
   return (
     <div className="Overview">
-      <h1>{props.data.city}</h1>
+      <h1 className="mt-3">{props.data.city}</h1>
       <ul>
         <li>
           <FormattedDate date={props.data.date} />
@@ -15,11 +17,11 @@ export default function Overview(props) {
         <div className="row">
           <div className="col-6">
             <div className="weather-temperature">
-              <img src={props.data.icon} alt={props.description} />
+              <WeatherIcon code={props.data.icon} size={52} />
 
               <strong>{Math.round(props.data.temperature)}</strong>
 
-              <span class="units">
+              <span className="units">
                 <a href="#" id="celsius">
                   °C
                 </a>
