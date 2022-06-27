@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import FormatDate from "./Format";
-
+import WeatherForecast from "./WeatheForecast";
 import "./Search.css";
+import Overview from "./Overview";
 export default function Search() {
   let [city, setCity] = useState("Kharkiv");
-  let [loaded, setLoaded] = useState(false);
-  let [weather, setWeather] = useState({});
+
+  let [weather, setWeather] = useState({ ready: false });
 
   function showTemperature(response) {
-    setLoaded(true);
     setWeather({
+      ready: true,
+      coordinates: response.data.coord,
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
@@ -30,52 +31,32 @@ export default function Search() {
   function updateQuery(event) {
     setCity(event.target.value);
   }
-  let form = (
-    <form onSubmit={submitSearch}>
-      <input type="search" placeholder="Type a query" onChange={updateQuery} />
-      <input type="submit" value="Search" />
-    </form>
-  );
 
-  if (loaded) {
+  if (weather.ready) {
     return (
-      <div className="Overview">
-        <ul>
-          <li>{weather.city}</li>
-          <li>{weather.date}</li>
-        </ul>
+      <div>
+        <form onSubmit={submitSearch}>
+          <input
+            type="search"
+            placeholder="Type a query"
+            onChange={updateQuery}
+          />
+          <input
+            type="submit"
+            className="btn btn-primary shadow-sm"
+            value="Search"
+          />
 
-        <div className="WeatherForecast">
-          <div className="row">
-            <div className="col-6">
-              <div className="weather-temperature">
-                <img src={weather.icon} alt={weather.description} />
-
-                <strong>{Math.round(weather.temperature)}</strong>
-
-                <span class="units">
-                  <a href="#" id="celsius">
-                    °C
-                  </a>
-                  |
-                  <a href="#" id="fahrenheit">
-                    °F
-                  </a>
-                </span>
-              </div>
-            </div>
-
-            <div class="col-6">
-              <ul>
-                <li>Humidity: {weather.humidity} %</li>
-                <li>Wind: {Math.round(weather.wind)} km/h</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+          <button type="button" className="btn btn-secondary">
+            Current
+          </button>
+        </form>
+        <Overview data={weather} />
+        <WeatherForecast coordinates={weather.coordinates} />
       </div>
     );
   } else {
-    return form;
+    submitSearch();
+    return "Loading...";
   }
 }

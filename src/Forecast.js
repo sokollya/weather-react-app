@@ -1,24 +1,30 @@
-import React, { useState } from "react";
-import axios from "axios";
-
-export default function Forecast() {
-  let [city, setCity] = useState("");
-  let [loaded, setLoaded] = useState(false);
-  let [weather, setWeather] = useState({});
-
-  function showTemperature(response) {
-    setLoaded(true);
-    setWeather({
-      mintemperature: response.data.main.temp.min,
-      maxtemperature: response.data.main.temp.max,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-    });
+import React from "react";
+export default function Forecast(props) {
+  function formatDay() {
+    let date = new Date(props.data.dt * 1000);
+    let day = date.getDay();
+    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    return days[day];
   }
-  function submitSearch(event) {
-    event.preventDefault();
+  function maxTemperature() {
+    let temperature = Math.round(props.data.temp.max);
 
-    let apiKey = "41a495466476bec4ff42a9430e4f37e4";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(showTemperature);
+    return `${temperature}°`;
   }
+
+  function minTemperature() {
+    let temperature = Math.round(props.data.temp.min);
+
+    return `${temperature}°`;
+  }
+  return (
+    <div className="WeatherForecastPreview">
+      <div className="forecast-time">{formatDay()}</div>
+      {props.data.weather[0].icon} size={38}
+      <div className="forecast-temperature">
+        <span className="forecast-temperature-max">{maxTemperature()}</span>
+        <span className="forecast-temperature-min">{minTemperature()}</span>
+      </div>
+    </div>
+  );
 }
