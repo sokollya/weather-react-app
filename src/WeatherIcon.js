@@ -1,33 +1,48 @@
 import React from "react";
-import ReactAnimatedWeather from "react-animated-weather";
+
 export default function WeatherIcon(props) {
   const codeMapping = {
-    "01d": "CLEAR_DAY",
-    "01n": "CLEAR_NIGHT",
-    "02d": "PARTLY_CLOUDY_DAY",
-    "02n": "PARTLY_CLOUDY_NIGHT",
-    "03d": "PARTLY_CLOUDY_DAY",
-    "03n": "PARTLY_CLOUDY_NIGHT",
-    "04d": "CLOUDY",
-    "04n": "CLOUDY",
-    "09d": "RAIN",
-    "09n": "RAIN",
-    "10d": "RAIN",
-    "10n": "RAIN",
-    "11d": "RAIN",
-    "11n": "RAIN",
-    "13d": "SNOW",
-    "13n": "SNOW",
-    "50d": "FOG",
-    "50n": "FOG",
+    "01d":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/clear-day.svg",
+    "01n":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/clear-night.svg",
+    "02d":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/partly-cloudy-day.svg",
+    "02n":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/partly-cloudy-night.svg",
+    "03d":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/cloudy.svg",
+    "03n":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/cloudy.svg",
+    "04d":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/overcast-day.svg",
+    "04n":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/overcast-night.svg",
+    "09d":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/drizzle.svg",
+    "09n":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/drizzle.svg",
+    "10d":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/extreme-rain.svg",
+    "10n":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/extreme-rain.svg",
+    "11d":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/thunderstorms.svg",
+    "11n":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/thunderstorms.svg",
+    "13d":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/snow.svg",
+    "13n":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/snow.svg",
+    "50d":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/tornado.svg",
+    "50n":
+      "https://raw.githubusercontent.com/RoseAmS/weather-icons/dev/production/fill/svg/tornado.svg",
   };
 
+  const newIcon = codeMapping[props.code];
+
   return (
-    <ReactAnimatedWeather
-      icon={codeMapping[props.code]}
-      color="#1e1e1e"
-      size={props.size}
-      animate={true}
-    />
+    <img src={newIcon} alt={props.alt} title={props.alt} width={props.width} />
   );
 }
