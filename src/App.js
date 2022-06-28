@@ -11,7 +11,7 @@ export default function App() {
         </div>
       </div>
       <div className="Contact">
-        <a href="https://github.com/sokollya/my-project1" target="_blank">
+        <a href="https://github.com/sokollya/weather-react-app" target="_blank">
           Open-source code
         </a>{" "}
         by Yana Sokol
