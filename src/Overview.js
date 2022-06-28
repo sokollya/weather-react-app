@@ -22,13 +22,7 @@ export default function Overview(props) {
               <strong>{Math.round(props.data.temperature)}</strong>
 
               <span className="units">
-                <a href="#" id="celsius">
-                  °C
-                </a>
-                |
-                <a href="#" id="fahrenheit">
-                  °F
-                </a>
+                <span id="celsius">°C</span>|<span id="fahrenheit">°F</span>
               </span>
             </div>
           </div>
