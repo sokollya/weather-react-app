@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import WeatherForecast from "./WeatheForecast";
 
 import Overview from "./Overview";
+import { BallTriangle } from "react-loader-spinner";
 import axios from "axios";
 import "./Search.css";
 export default function Search(props) {
@@ -78,6 +79,13 @@ export default function Search(props) {
     );
   } else {
     search();
-    return "Loading...";
+    return (
+      <BallTriangle
+        color="#00BFFF"
+        height={80}
+        width={80}
+        ariaLabel="loading"
+      />
+    );
   }
 }

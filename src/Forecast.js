@@ -25,6 +25,7 @@ export default function Forecast(props) {
     <div className="WeatherForecastPreview">
       <div className="forecast-time">{formatDay()}</div>
       <WeatherIcon
+        className="ForecastIcon"
         code={props.data.weather[0].icon}
         alt={props.data.weather[0].description}
         width={45}
