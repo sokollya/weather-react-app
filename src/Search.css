@@ -110,7 +110,7 @@ input[type="submit"],
 .WeatherForecastPreview {
   text-align: center;
 }
-@media (min-width: 300px) {
+@media (max-width: 900px) {
   .WeatherForecastPreview icon {
     display: inline-block;
   }
