@@ -16,7 +16,7 @@ export default function Overview(props) {
 
       <div className="WeatherForecast">
         <div className="row">
-          <div className="col-6">
+          <div className="col-sm-6">
             <div className="weather-temperature">
               <WeatherIcon code={props.data.icon} width={45} />
 
@@ -24,7 +24,7 @@ export default function Overview(props) {
             </div>
           </div>
 
-          <div class=" HumWin col-6">
+          <div className=" HumWin col-sm-6">
             <ul>
               <li>Humidity: {props.data.humidity} %</li>
               <li>Wind: {Math.round(props.data.wind)} km/h</li>

@@ -110,3 +110,52 @@ input[type="submit"],
 .WeatherForecastPreview {
   text-align: center;
 }
+@media (min-width: 300px) {
+  .WeatherForecastPreview icon {
+    display: inline-block;
+  }
+  .Weather {
+    max-width: 25px;
+  }
+  input[type="search"] {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 200px;
+    height: 40px;
+  }
+  input[type="submit"],
+  .btn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 20px;
+    font-size: 10px;
+  }
+  h1 {
+    line-height: 15px;
+    font-size: 16px;
+  }
+  li {
+    line-height: 10px;
+    font-size: 10px;
+  }
+  .WeatherTemp {
+    display: flex;
+    flex-direction: row;
+  }
+  .temp {
+    margin-top: 20px;
+  }
+  .units {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+    margin-top: 50px;
+  }
+
+  strong {
+    font-size: 25px;
+    font-weight: lighter;
+  }
+}

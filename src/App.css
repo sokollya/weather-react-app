@@ -18,3 +18,8 @@ a {
 :a hover {
   color: blue;
 }
+@media (min-width: 300px) {
+  .WeatherForecastPreview icon {
+    display: inline-block;
+  }
+}
