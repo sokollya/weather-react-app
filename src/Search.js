@@ -53,25 +53,30 @@ export default function Search(props) {
     return (
       <div className="Weather">
         <form onSubmit={handleSubmit}>
-          <input
-            type="search"
-            placeholder="Enter a city..."
-            onChange={updateQuery}
-          />
+          <div className="row">
+            <div className="col-sm-8">
+              <input
+                type="search"
+                placeholder="Enter a city..."
+                onChange={updateQuery}
+              />
+            </div>
+            <div className="col-sm-6">
+              <input
+                type="submit"
+                className="btn btn-primary shadow-sm"
+                value="Search"
+              />
 
-          <input
-            type="submit"
-            className="btn btn-primary shadow-sm"
-            value="Search"
-          />
-
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={getCurrentLocation}
-          >
-            Current
-          </button>
+              <button
+                type="button"
+                className="btn btn-secondary"
+                onClick={getCurrentLocation}
+              >
+                Current
+              </button>
+            </div>
+          </div>
         </form>
         <Overview data={weather} />
         <WeatherForecast coordinates={weather.coordinates} />

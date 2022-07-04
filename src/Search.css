@@ -70,7 +70,6 @@ input[type="search"] {
   width: 350px;
   height: 40px;
   outline: 0;
-  margin-right: 10px;
 }
 ::placeholder {
   font-size: 18px;
@@ -82,7 +81,7 @@ input[type="submit"],
   font-size: 20px;
   font-weight: 400;
   padding: 5px 10px;
-  margin-left: 7px;
+  margin-left: 1px;
 }
 .HumWin {
   margin-top: 20px;
@@ -111,51 +110,12 @@ input[type="submit"],
   text-align: center;
 }
 @media (max-width: 900px) {
-  .WeatherForecastPreview icon {
-    display: inline-block;
-  }
-  .Weather {
-    max-width: 25px;
-  }
-  input[type="search"] {
+  .row {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    width: 200px;
-    height: 40px;
+    flex-wrap: wrap;
   }
-  input[type="submit"],
   .btn {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    height: 20px;
-    font-size: 10px;
-  }
-  h1 {
-    line-height: 15px;
-    font-size: 16px;
-  }
-  li {
-    line-height: 10px;
-    font-size: 10px;
-  }
-  .WeatherTemp {
-    display: flex;
-    flex-direction: row;
-  }
-  .temp {
     margin-top: 20px;
-  }
-  .units {
-    display: flex;
-    flex-direction: row;
-    font-size: 10px;
-    margin-top: 50px;
-  }
-
-  strong {
-    font-size: 25px;
-    font-weight: lighter;
   }
 }
